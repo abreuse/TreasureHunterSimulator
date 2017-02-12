@@ -1,4 +1,4 @@
-package element;
+package Element;
 
 public class Square extends Element{
 
@@ -17,6 +17,14 @@ public class Square extends Element{
 
     public int getTreasures() {
         return treasures;
+    }
+
+    public void setTreasures(int treasures) {
+        this.treasures = treasures;
+    }
+
+    public void setMountain(boolean mountain) {
+        isMountain = mountain;
     }
 
     public boolean isOccupied() {

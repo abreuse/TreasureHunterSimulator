@@ -1,4 +1,4 @@
-package element;
+package Element;
 
 public abstract class Element {
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class GameParser {
+public class FileParser {
 
     public static List<String> parseBoardTxt(String file) {
         try (Stream<String> stream = Files.lines(Paths.get(file))) {

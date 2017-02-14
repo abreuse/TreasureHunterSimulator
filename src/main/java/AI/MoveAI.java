@@ -54,6 +54,7 @@ public class MoveAI {
             adventurer.setPath(adventurer.getPath().substring(i, adventurer.getPath().length()));
             return false;
         }
-        else return !board.get(x + " " + y).isOccupied();
+
+        return board.get(x + " " + y).getAdventurer() == null;
     }
 }

@@ -14,12 +14,16 @@ public class AdventurerMoveSouth extends AbstractAdventurerMove implements IComm
     @Override
     public void execute() {
         adventurer.setPath(adventurer.getPath().substring(1, adventurer.getPath().length()));
+        adventurer.getSquare().setAdventurer(null);
         adventurer.setSquare(board.get(adventurer.getPositionX() + " " + (adventurer.getPositionY() + 1)));
+        adventurer.getSquare().setAdventurer(adventurer);
     }
 
     @Override
     public void undo() {
+        adventurer.getSquare().setAdventurer(null);
         adventurer.setSquare(board.get(adventurer.getPositionX() + " " + (adventurer.getPositionY() - 1)));
+        adventurer.getSquare().setAdventurer(adventurer);
         adventurer.setPath("A" + adventurer.getPath());
     }
 }

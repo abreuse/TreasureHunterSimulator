@@ -17,14 +17,14 @@ public class AdventurerRotateLeft extends AbstractAdventurerRotate implements IC
         if(Objects.equals(adventurer.getOrientation(), "N"))
             adventurer.setOrientation("W");
 
-        if(Objects.equals(adventurer.getOrientation(), "W"))
-            adventurer.setOrientation("N");
+        else if(Objects.equals(adventurer.getOrientation(), "W"))
+            adventurer.setOrientation("S");
 
-        if(Objects.equals(adventurer.getOrientation(), "S"))
+        else if(Objects.equals(adventurer.getOrientation(), "S"))
             adventurer.setOrientation("E");
 
-        if(Objects.equals(adventurer.getOrientation(), "E"))
-            adventurer.setOrientation("S");
+        else if(Objects.equals(adventurer.getOrientation(), "E"))
+            adventurer.setOrientation("N");
     }
 
     @Override

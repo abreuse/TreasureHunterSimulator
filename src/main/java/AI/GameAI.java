@@ -3,12 +3,16 @@ package AI;
 import Element.Adventurer;
 import Element.Square;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class GameAI {
 
     private List<Adventurer> adventurers;
+
+    private List<Adventurer> exhaustedAdventurers;
 
     private HashMap<String, Square> board;
 
@@ -17,6 +21,7 @@ public class GameAI {
     private RotateAI rotateAI;
 
     public GameAI(List<Adventurer> adventurers, HashMap<String, Square> board) {
+        this.exhaustedAdventurers = new ArrayList<>();
         this.adventurers = adventurers;
         this.board = board;
         moveAI = new MoveAI();
@@ -27,24 +32,33 @@ public class GameAI {
         for (Adventurer adventurer : adventurers) {
             if(adventurer.getSquare().getTreasures() == 0)
             {
-                if(adventurer.getPath().charAt(0) == 'A')
-                    moveAI.move(adventurer, board);
+                if(!Objects.equals(adventurer.getPath(), "")){
+                    if(adventurer.getPath().charAt(0) == 'A')
+                        moveAI.move(adventurer, board);
 
-                else if(adventurer.getPath().charAt(0) == 'G')
-                    rotateAI.rotateLeft(adventurer);
+                    else if(adventurer.getPath().charAt(0) == 'G')
+                        rotateAI.rotateLeft(adventurer);
 
-                else if(adventurer.getPath().charAt(0) == 'D')
-                    rotateAI.rotateRight(adventurer);
+                    else if(adventurer.getPath().charAt(0) == 'D')
+                        rotateAI.rotateRight(adventurer);
+                }
+                else
+                    exhaustedAdventurers.add(adventurer);
             }
             else
                 adventurer.getSquare().setTreasures(adventurer.getSquare().getTreasures() - 1);
         }
 
+        if(!exhaustedAdventurers.isEmpty())
+        {
+            for (Adventurer adventurer : exhaustedAdventurers) {
+                adventurers.remove(adventurer);
+            }
+            exhaustedAdventurers.clear();
+
+        }
+
         CommandAI.executeAllCommands();
         CommandAI.saveCommands();
-
-        //TODO: condition pour reboucler jusqu'a la fin du jeu
-        //TODO: repaint les components graphiques
-        wait(1000);
     }
 }

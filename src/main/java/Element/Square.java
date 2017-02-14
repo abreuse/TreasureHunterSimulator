@@ -2,17 +2,25 @@ package Element;
 
 public class Square extends Element{
 
-    private int treasures;
+    private Adventurer adventurer;
 
-    private boolean isOccupied;
+    private int treasures;
 
     private boolean isMountain;
 
-    public Square(int x, int y, int treasures, boolean isOccupied, boolean isMountain) {
+    public Square(int x, int y, int treasures, Adventurer adventurer, boolean isMountain) {
         super(x, y);
         this.treasures = treasures;
-        this.isOccupied = isOccupied;
+        this.adventurer = adventurer;
         this.isMountain = isMountain;
+    }
+
+    public Adventurer getAdventurer() {
+        return adventurer;
+    }
+
+    public void setAdventurer(Adventurer adventurer) {
+        this.adventurer = adventurer;
     }
 
     public int getTreasures() {
@@ -27,13 +35,6 @@ public class Square extends Element{
         isMountain = mountain;
     }
 
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
 
     public boolean isMountain() {
         return isMountain;
@@ -43,8 +44,8 @@ public class Square extends Element{
     public String toString() {
         return super.toString() +
                 "; Square{" +
+                "adventurer=" + adventurer +
                 "treasures=" + treasures +
-                ", isOccupied=" + isOccupied +
                 ", isMountain=" + isMountain +
                 '}';
     }

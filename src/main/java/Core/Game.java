@@ -55,7 +55,7 @@ public class Game {
 
         for (int x = 1; x <= this.getWidth(); x++) {
             for (int y = 1; y <= this.getHeight(); y++) {
-                Square square = new Square(x, y, 0, false, false);
+                Square square = new Square(x, y, 0, null, false);
                 this.board.put(String.valueOf(x) + " " + String.valueOf(y), square);
             }
         }
@@ -122,10 +122,10 @@ public class Game {
             else {
                 String[] positions = parts[1].split("-");
                 Adventurer adventurer = new Adventurer(parts[0]
-                        , parts[2]
                         , parts[3]
+                        , parts[2]
                         , this.board.get(positions[0] + " " + positions[1]));
-                adventurer.getSquare().setOccupied(true);
+                adventurer.getSquare().setAdventurer(adventurer);
                 this.adventurers.add(adventurer);
             }
         }

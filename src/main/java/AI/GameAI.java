@@ -1,5 +1,6 @@
 package AI;
 
+import AI.Command.PickOneTreasure;
 import Element.Adventurer;
 import Element.Square;
 
@@ -46,7 +47,8 @@ public class GameAI {
                     exhaustedAdventurers.add(adventurer);
             }
             else
-                adventurer.getSquare().setTreasures(adventurer.getSquare().getTreasures() - 1);
+                CommandAI.addCommand(new PickOneTreasure(adventurer.getSquare()));
+                //adventurer.getSquare().setTreasures(adventurer.getSquare().getTreasures() - 1);
         }
 
         if(!exhaustedAdventurers.isEmpty())

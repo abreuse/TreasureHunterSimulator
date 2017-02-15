@@ -52,4 +52,7 @@ public class CommandAI {
     }
 
 
+    public static List<ICommand> getHistory() {
+        return history;
+    }
 }

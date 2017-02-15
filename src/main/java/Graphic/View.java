@@ -19,16 +19,16 @@ public class View {
 
     public void initView(Game game) throws InterruptedException {
         panel.setLayout(new GridLayout(game.getHeight(), game.getWidth(), 0, 0));
-        update(game);
+        update(game, 0);
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public void update(Game game) throws InterruptedException {
+    public void update(Game game, long delay) throws InterruptedException {
 
-        Thread.sleep(1000);
+        Thread.sleep(delay);
 
         panel.removeAll();
 
@@ -42,20 +42,20 @@ public class View {
 
                 else if (game.getBoard().get(x + " " + y).getTreasures() > 0
                         && game.getBoard().get(x + " " + y).getAdventurer() != null)
-                    label = new JLabel(new ImageIcon("src/main/resources/img/explosion.png"), JLabel.CENTER);
+                    label = new JLabel(new ImageIcon("src/main/resources/img/mining.png"), JLabel.CENTER);
 
                 else if(game.getBoard().get(x + " " + y).getAdventurer() != null)
                 {
                     if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "N"))
                         label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-north.png"), JLabel.CENTER);
 
-                    if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "E"))
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "E"))
                         label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-east.png"), JLabel.CENTER);
 
-                    if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "S"))
-                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-south-grass.png"), JLabel.CENTER);
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "S"))
+                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-south.png"), JLabel.CENTER);
 
-                    if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "W"))
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "W"))
                         label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-west.png"), JLabel.CENTER);
                 }
 

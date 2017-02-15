@@ -47,7 +47,7 @@ public class MoveAI {
                 || board.get(x + " " + y).isMountain())
         {
             int i = 0;
-            while(adventurer.getPath().charAt(i) == 'A')
+            while(i < adventurer.getPath().length() && adventurer.getPath().charAt(i) == 'A')
             {
                 i++;
             }

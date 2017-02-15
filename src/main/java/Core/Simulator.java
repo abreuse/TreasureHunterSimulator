@@ -1,5 +1,6 @@
 package Core;
 
+import AI.CommandAI;
 import AI.GameAI;
 import Graphic.View;
 
@@ -17,11 +18,17 @@ public class Simulator {
         while(!game.getAdventurers().isEmpty())
         {
             gameAI.nextTick();
-            view.update(game);
+            view.update(game, 1000);
         }
 
         System.out.println("END.");
-        //TODO: condition pour reboucler jusqu'a la fin du jeu
-        //TODO: repaint les components graphiques
+
+
+        //Undo just for fun
+        while(!CommandAI.getHistory().isEmpty())
+        {
+            CommandAI.undoCommand();
+            view.update(game, 100);
+        }
     }
 }

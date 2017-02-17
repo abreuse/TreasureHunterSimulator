@@ -41,7 +41,7 @@ public class MoveAI {
     }
 
 
-    private boolean canMoveTo(int x, int y, HashMap<String, Square> board, Adventurer adventurer)
+    public boolean canMoveTo(int x, int y, HashMap<String, Square> board, Adventurer adventurer)
     {
         if(!board.containsKey(x + " " + y)
                 || board.get(x + " " + y).isMountain())

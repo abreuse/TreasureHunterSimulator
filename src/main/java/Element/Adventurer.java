@@ -10,11 +10,18 @@ public class Adventurer{
 
     private Square square;
 
+    private int treasuresFound;
+
     public Adventurer(String name, String path, String orientation, Square square) {
         this.name = name;
         this.path = path;
         this.orientation = orientation;
         this.square = square;
+        this.treasuresFound = 0;
+    }
+
+    public Adventurer() {
+
     }
 
     public int getPositionX()
@@ -58,12 +65,18 @@ public class Adventurer{
         this.square = square;
     }
 
+    public int getTreasuresFound() {
+        return treasuresFound;
+    }
+
+    public void setTreasuresFound(int treasuresFound) {
+        this.treasuresFound = treasuresFound;
+    }
+
     @Override
     public String toString() {
-        return "Adventurer{" +
-                "square=" + square +
-                ", path='" + path + '\'' +
-                ", orientation='" + orientation + '\'' +
-                '}';
+        return "Adventurer " + name +
+                ", x=" + square.getX() + ", y=" + square.getY() +
+                ", treasures found=" + treasuresFound;
     }
 }

@@ -10,7 +10,6 @@ public class CommandAI {
     private static List<ICommand> commands = new ArrayList<>();
 
     private static List<ICommand> history = new ArrayList<>();
-
     public static List<ICommand> getCommandList()
     {
         return commands;
@@ -54,5 +53,9 @@ public class CommandAI {
 
     public static List<ICommand> getHistory() {
         return history;
+    }
+
+    public static List<ICommand> getCommands() {
+        return commands;
     }
 }

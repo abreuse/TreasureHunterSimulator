@@ -1,9 +1,11 @@
 package AI;
 
 import AI.Command.PickOneTreasure;
+import Core.FileScribe;
 import Element.Adventurer;
 import Element.Square;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,5 +64,17 @@ public class GameAI {
 
         CommandAI.executeAllCommands();
         CommandAI.saveCommands();
+
+        List<String> lines = new ArrayList<>();
+        for (Adventurer adventurer : adventurers) {
+            lines.add(adventurer.toString());
+        }
+
+        try {
+            FileScribe.separateTurn();
+            FileScribe.writeLines(lines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

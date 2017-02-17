@@ -13,11 +13,12 @@ public class PickOneTreasure implements ICommand {
     @Override
     public void execute() {
         square.setTreasures(square.getTreasures() - 1);
+        square.getAdventurer().setTreasuresFound(square.getAdventurer().getTreasuresFound() + 1);
     }
 
     @Override
     public void undo() {
-
+        square.getAdventurer().setTreasuresFound(square.getAdventurer().getTreasuresFound() - 1);
         square.setTreasures(square.getTreasures() + 1);
     }
 }

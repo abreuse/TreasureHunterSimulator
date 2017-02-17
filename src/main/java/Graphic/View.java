@@ -38,33 +38,40 @@ public class View {
             for (int x = 1; x <= game.getWidth(); x++) {
 
                 if(game.getBoard().get(x + " " + y).isMountain())
-                    label = new JLabel(new ImageIcon("src/main/resources/img/mountain.png"), JLabel.CENTER);
+                    label = new JLabel(new ImageIcon(getClass().getResource("/img/mountain.png")), JLabel.CENTER);
 
                 else if (game.getBoard().get(x + " " + y).getTreasures() > 0
                         && game.getBoard().get(x + " " + y).getAdventurer() != null)
-                    label = new JLabel(new ImageIcon("src/main/resources/img/mining.png"), JLabel.CENTER);
+                    label = new JLabel(new ImageIcon(getClass().getResource("/img/mining.png")), JLabel.CENTER);
 
                 else if(game.getBoard().get(x + " " + y).getAdventurer() != null)
                 {
-                    if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "N"))
-                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-north.png"), JLabel.CENTER);
+                    if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "N")) {
+                        label = new JLabel(new ImageIcon(getClass().getResource("/img/adventurer-north.png")), JLabel.CENTER);
+                    }
 
-                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "E"))
-                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-east.png"), JLabel.CENTER);
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "E")) {
+                        label = new JLabel(new ImageIcon(getClass().getResource("/img/adventurer-east.png")), JLabel.CENTER);
+                    }
 
-                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "S"))
-                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-south.png"), JLabel.CENTER);
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "S")) {
+                        label = new JLabel(new ImageIcon(getClass().getResource("/img/adventurer-south.png")), JLabel.CENTER);
+                    }
 
-                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "W"))
-                        label = new JLabel(new ImageIcon("src/main/resources/img/adventurer-west.png"), JLabel.CENTER);
+                    else if(Objects.equals(game.getBoard().get(x + " " + y).getAdventurer().getOrientation(), "W")) {
+                        label = new JLabel(new ImageIcon(getClass().getResource("/img/adventurer-west.png")), JLabel.CENTER);
+                    }
                 }
 
                 else if(game.getBoard().get(x + " " + y).getTreasures() > 0)
+                {
                     label = new JLabel(String.valueOf(game.getBoard().get(x + " " + y).getTreasures()), JLabel.CENTER);
-
+                    label.setBackground(Color.yellow);
+                    label.setOpaque(true);
+                }
 
                 else
-                    label = new JLabel(new ImageIcon("src/main/resources/img/grass.png"), JLabel.CENTER);
+                    label = new JLabel(new ImageIcon(getClass().getResource("/img/grass.png")), JLabel.CENTER);
 
                 label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
                 panel.add(label);
